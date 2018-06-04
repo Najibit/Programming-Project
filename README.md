@@ -30,5 +30,5 @@ A sketch of how this may be implemented:
 
 // Data sources
 
-tweets.csv (https://www.kaggle.com/vikasg/russian-troll-tweets/data)
+tweets.csv (https://www.kaggle.com/vikasg/russian-troll-tweets/data) </br>
 users.csv (https://www.kaggle.com/vikasg/russian-troll-tweets/data)
