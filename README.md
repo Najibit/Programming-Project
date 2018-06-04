@@ -25,3 +25,10 @@ A sketch of how this may be implemented:
 <p align="center">
   <img src="https://i.imgur.com/NXtlfoC.jpg">
 </p>
+
+## Prerequisites
+
+// Data sources
+
+tweets.csv (https://www.kaggle.com/vikasg/russian-troll-tweets/data)
+users.csv (https://www.kaggle.com/vikasg/russian-troll-tweets/data)
