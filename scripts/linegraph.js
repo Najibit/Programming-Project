@@ -26,6 +26,7 @@ window.onload = function () {
                   .append('svg')
                   .attr('width', DM.width)
                   .attr('height', DM.height)
+                  .attr('id', 'linesvg')
 
     const xScale = d3.scaleLinear()
                         .domain([0, 400])
