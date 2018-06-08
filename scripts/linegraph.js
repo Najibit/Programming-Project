@@ -1,55 +1,53 @@
-window.onload = function () {
+function lineGraph(tweetVolumes) {
 
-  function getDimensions() {
+  // get graph dimensions
+  const DM = getDimensions();
 
-    const DIMENSIONS = {
-      width: 1000,
-      height: 500,
-      margin: {
-        top: 50,
-        bottom: 50,
-        left: 50,
-        right: 50
-      },
-    }
+  // append SVG
+  const SVG = d3.select('body')
+                .append('svg')
+                .attr('width', DM.width)
+                .attr('height', DM.height)
+                .attr('id', 'linesvg')
+  // x- and y-scales
+  const xScale = d3.scaleLinear()
+                      .domain([0, 365])
+                      .range([0, DM.width]);
+  const yScale = d3.scaleLinear()
+                      .domain([0, 4000])
+                      .range([DM.height, 0]);
 
-    return DIMENSIONS
-  }
+  // x- and y-axis
+  let xAxis = d3.axisBottom(xScale)
+  let yAxis = d3.axisLeft(yScale)
 
-  function lineGraph() {
+  // add x-axis
+  SVG.append("g")
+      .attr('class', 'axis')
+      .attr('transform', `translate(${DM.margin.left}, ${DM.height})`)
+      .call(xAxis);
 
-    const DM = getDimensions();
-    let dayTweets = getTweetVolumes();
-    console.log(dayTweets);
+  // add y-axis
+  SVG.append("g")
+      .attr('class', 'axis')
+      .attr('transform', 'translate(' + DM.margin.left + ",0)")
+      .call(yAxis);
 
-    const SVG = d3.select('body')
-                  .append('svg')
-                  .attr('width', DM.width)
-                  .attr('height', DM.height)
-                  .attr('id', 'linesvg')
-
-    const xScale = d3.scaleLinear()
-                        .domain([0, 400])
-                        .range([0, DM.width - DM.margin.left - DM.margin.right]);
-    const yScale = d3.scaleLinear()
-                        .domain([0, 1000])
-                        .range([DM.height, 0]);
-
-
-    let xAxis = d3.axisBottom(xScale)
-    let yAxis = d3.axisLeft(yScale)
-
-    SVG.append("g")
-        .attr('class', 'axis')
-        .attr('transform', `translate(${DM.margin.left}, ${DM.height})`)
-        .call(xAxis);
-
-    SVG.append("g")
-        .attr('class', 'axis')
-        .attr('transform', 'translate(' + DM.margin.left + ",0)")
-        .call(yAxis);
-
-  }
-
-  lineGraph();
+  // add all rects
+  SVG.selectAll("rect")
+     .data(tweetVolumes)
+     .enter()
+     .append("rect")
+     .attr("x", (d, i) => DM.margin.left + i * (DM.width / tweetVolumes.length))
+     .attr("y", DM.height)
+     .attr("width", (DM.width - DM.margin.left) / tweetVolumes.length)
+     .attr("height", 0)
+     .style("opacity", 0)
+     .transition().duration(4000)
+     .delay((d, i) => i * 2)
+     .style("opacity", 1)
+     .attr("y", d => yScale(d[1]))
+     .attr("height", d => DM.height - yScale(d[1]))
+     .attr('fill', 'white')
+     .attr('stroke', 'black')
 }

@@ -1,22 +1,33 @@
-function getTweetVolumes() {
+window.onload = function() {
 
-  // store all tweets per day
-  let days = [];
+  function getTweetVolumes() {
 
-  d3.csv("data/tweetvolume.csv", function(data) {
+    // store all tweets per day
+    let days = [];
 
-    for (let i = 0; i < data.length; i++) {
+    // make a queue
+    const Q = d3.queue();
 
-      let day = [];
+    // import all data from csv
+    Q.defer(d3.csv, "data/tweetvolume.csv")
+     .await(processData);
 
-      day.push(data[i]["\"day\""].replace("\"", "")
-                                 .replace("\"", ""));
-      day.push(parseInt(data[i]["\"num\""].replace("\"", "")
-                                 .replace("\"", "")));
+    // process data so it's usable
+    function processData(error, response) {
 
-      days.push(day);
+      if (error) throw error;
+
+      for (let i = 0; i < response.length; i++) {
+
+        let day = [];
+
+        day.push(response[i]['day']);
+        day.push(parseInt(response[i]['num']));
+
+        days.push(day);
+      }
+      lineGraph(days);
     }
-  })
-
-  return days;
+  }
+  getTweetVolumes();
 }
