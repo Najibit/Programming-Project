@@ -17,7 +17,7 @@ window.onload = function() {
 
     // process data so it's usable
     function processHash(error, response) {
-      
+
       if (error) throw error;
 
       hashtags = response;
