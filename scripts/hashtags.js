@@ -1,4 +1,5 @@
 let hashtags;
+let hashMonths;
 
 window.onload = function() {
 
@@ -11,12 +12,12 @@ window.onload = function() {
     const Q = d3.queue();
 
     // import all data from csv
-    Q.defer(d3.csv, "data/hashtags/hashtags.csv")
+    Q.defer(d3.csv, "data/hashtags/allhashtags.csv")
      .await(processHash);
 
     // process data so it's usable
     function processHash(error, response) {
-
+      
       if (error) throw error;
 
       hashtags = response;
@@ -24,13 +25,11 @@ window.onload = function() {
       let amountOfWeeks = 52;
       let divider = response.length / amountOfWeeks;
       let months = getMonths();
-      let hashMonths = {}
 
-      function parseMonthTags(index, month) {
-        let monthTags = hashtags[index].toptags.split(',');
-        monthTags.forEach(function(tag) {
-          hashMonths[month].push(tag);
-        })
+      hashMonths = {};
+
+      for (let i = 0; i < months.length; i++) {
+        hashMonths[months[i]] = {};
       }
 
       for (let i = 0; i < months.length; i++) {
@@ -94,7 +93,9 @@ window.onload = function() {
         }
       }
 
-      console.log(hashMonths)
+      for (let i = 0; i < months.length; i++) {
+          hashMonths[months[i]] = sortObject(hashMonths[months[i]]);
+      }
     }
   }
   getHashTags();
