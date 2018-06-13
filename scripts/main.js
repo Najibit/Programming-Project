@@ -1,5 +1,5 @@
 var d3 = require("d3"),
-    cloud = require("../");
+    cloud = require("node.js");
 
 var layout = cloud()
     .size([500, 500])
