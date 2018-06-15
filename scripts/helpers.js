@@ -3,7 +3,7 @@ function sortObject(obj) {
     for (var prop in obj) {
         if (obj.hasOwnProperty(prop)) {
             arr.push({
-                'key': prop,
+                'key': `#${prop}`,
                 'value': obj[prop]
             });
         }
@@ -23,4 +23,34 @@ function parseMonthTags(index, month) {
       hashMonths[month][tag]++;
     }
   })
+}
+
+function getDimensions() {
+
+  const DIMENSIONS = {
+    width: 1000,
+    height: 500,
+    margin: {
+      top: 50,
+      bottom: 50,
+      left: 50,
+      right: 50
+    },
+    padding: {
+      t: 10,
+      b: 10,
+      l: 10,
+      r: 10
+    }
+  }
+
+  return DIMENSIONS
+}
+
+function getMonths() {
+
+  const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                  'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+
+  return months
 }

@@ -1,3 +1,26 @@
 #linesvg {
   padding: 100px;
 }
+
+.line {
+  fill: lightgreen;
+  stroke: green;
+  stroke-width: 3px;
+}
+
+.axis {
+  stroke-width: 5px;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: Courier, monospace;
+}
+
+#monthrects {
+  fill: lightgreen;
+  stroke: green;
+  stroke-width: 3px;
+}
+
+#monthrects:hover {
+  fill: rgb(0, 255, 0, 0.8)
+}
