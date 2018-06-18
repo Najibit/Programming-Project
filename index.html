@@ -1,31 +1,68 @@
 <!DOCTYPE html>
-<html>
-<head>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
 
-  <!-- libraries -->
-  <script src="libraries/d3/d3.v4.js" charset="utf-8"></script>
-  <!-- <script src="libraries/d3/d3.layout.cloud.js" charset="utf-8"></script> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <title>Trolls</title>
 
-  <!-- all scripts -->
-  <script src="scripts/helpers.js"></script>
-  <script src="scripts/tweetvolume.js"></script>
-  <script src="scripts/hashtags.js"></script>
-  <script src="scripts/linegraph.js"></script>
-  <script src="scripts/main.js"></script>
-  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
-  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js"></script> -->
-  <!-- <script src="libraries/d3/d3.v4.js"></script> -->
-  <!-- <script src="scripts/cloud.js"></script> -->
-  <!-- <script src="libraries/d3/d3.v4.js"></script> -->
+        <!-- libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+        <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
 
 
+        <!-- scripts -->
+        <script src="scripts/helpers.js"></script>
+        <!-- <script src="scripts/tweetvolume.js"></script> -->
+        <script src="scripts/brushzoom.js"></script>
+        <script src="scripts/hashtags.js"></script>
+        <!-- <script src="scripts/linegraph.js"></script> -->
+        <!-- <script src="scripts/parsetweets.js"></script> -->
+
+        <!-- styles -->
+        <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
 
 
-  <!-- styles -->
-  <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
+      </head>
+      <body>
+        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <a class="navbar-brand" href="#">Trolls</a>
+     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+       <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <a class="nav-link" href="linked.html">Home<span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="about.html">About</a>
+         </li>
+         <li class="nav-item">
+           <a class="nav-link" href="sources.html">Sources</a>
+         </li>
+         <li class="nav-item">
+           <li class="nav-link" id="data1">Europe by internet access</li>
+         </li>
+         <li class="nav-item">
+           <li class="nav-link" id="data2">Europe by music listeners</li>
+         </li>
+       </ul>
+     </div>
+   </nav>
+   <div class="seperator"></div>
+   <div class="seperator"></div>
+   <div class="container">
 
-</head>
-<body>
-</body>
+     <div class="starter-template">
+       <h1>The Ultimate Revelation Of Russian Trolls</h1>
+     </div>
+   </div>
+   <div class="seperator"></div>
+   <svg id="linechart" width="1300" height="600"></svg>
+   <div class="seperator"></div>
+    </body>
 </html>

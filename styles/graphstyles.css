@@ -1,26 +1,81 @@
-#linesvg {
-  padding: 100px;
-}
 
-.line {
-  fill: lightgreen;
-  stroke: green;
-  stroke-width: 3px;
-}
 
 .axis {
   stroke-width: 5px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 10px;
   font-family: Courier, monospace;
 }
 
-#monthrects {
-  fill: lightgreen;
-  stroke: green;
-  stroke-width: 3px;
-}
 
 #monthrects:hover {
   fill: rgb(0, 255, 0, 0.8)
+}
+
+.area {
+  fill: lightgreen;
+  stroke: green;
+  stroke-width: 3px;
+  clip-path: url(#clip);
+}
+
+.zoom {
+  cursor: move;
+  fill: none;
+  pointer-events: all;
+}
+
+
+rect.zoom {
+  background-color: black;
+  z-index: 2;
+}
+
+.area {
+  z-index: 20;
+}
+
+/* bootstrap styles */
+
+.nav-item-active {
+  padding-right: 20px;
+}
+
+#linechart {
+  display:block;
+  margin:auto;
+}
+
+.container {
+  width: 100%;
+  height: 500px;
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/f5343236321073.5717a32ce906c.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+h1 {
+  background-color: white;
+  margin: 0px;
+  opacity: 0.5;
+  width: 50%;
+  display: block;
+  margin: auto;
+  font-weight: bold;
+}
+
+body {
+  padding-top: 3em;
+}
+
+.starter-template {
+
+}
+
+.seperator {
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-color: black;
 }

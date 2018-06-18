@@ -54,3 +54,58 @@ function getMonths() {
 
   return months
 }
+
+
+
+function processSentiment(tokens, tweets) {
+
+    let dictionary = {};
+    dictionary['positive'] = [];
+    dictionary['negative'] = [];
+    let negCount = 0
+
+    const Q = d3.queue();
+
+    Q.defer(d3.csv, "data/sentiments/positive-words.csv")
+     .defer(d3.csv, "data/sentiments/negative-words.csv")
+     .awaitAll(processDict)
+
+    function processDict(error, response) {
+
+      if (error) throw error;
+
+      positiveWords = response[0];
+      negativeWords = response[1];
+
+      for (let i = 0; i < positiveWords.length; i++) {
+        dictionary.positive.push(positiveWords[i].words);
+      }
+
+      for (let i = 0; i < negativeWords.length; i++) {
+        dictionary.negative.push(negativeWords[i].words);
+        negCount++;
+      }
+    }
+    setTimeout(() => calculateSentiment(dictionary, tokens, tweets), 3000);
+}
+
+function calculateSentiment(dictionary, tokens, tweets) {
+
+  let score = 0
+
+  for (let i = 0; i < tokens.length; i++) {
+
+    for (let j = 0; j < 2006; j++) {
+      if (dictionary.positive[j] == tokens[i].toLowerCase()) {
+        score++;
+      }
+    }
+
+    for (let k = 0; k < 4783; k++) {
+      if (dictionary.negative[k] == tokens[i].toLowerCase()) {
+        score--;
+      }
+    }
+  }
+  return score
+}
