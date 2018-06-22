@@ -57,7 +57,8 @@ function getMonths() {
 
 
 
-function processSentiment(tokens, tweets) {
+function processSentiment(tokens) {
+  console.log(tokens);
 
     let dictionary = {};
     dictionary['positive'] = [];
@@ -85,17 +86,21 @@ function processSentiment(tokens, tweets) {
         dictionary.negative.push(negativeWords[i].words);
         negCount++;
       }
+      console.log(dictionary);
+      return calculateSentiment(dictionary, tokens);
     }
-    setTimeout(() => calculateSentiment(dictionary, tokens, tweets), 3000);
 }
 
-function calculateSentiment(dictionary, tokens, tweets) {
+function calculateSentiment(dictionary, tokens) {
 
   let score = 0
+  console.log(score);
 
   for (let i = 0; i < tokens.length; i++) {
+    console.log(tokens[i].toLowerCase())
 
     for (let j = 0; j < 2006; j++) {
+
       if (dictionary.positive[j] == tokens[i].toLowerCase()) {
         score++;
       }
@@ -107,5 +112,17 @@ function calculateSentiment(dictionary, tokens, tweets) {
       }
     }
   }
+  console.log(score);
   return score
+}
+
+function groupHashtags(hashtags, hashDict, index) {
+  let months = getMonths();
+  let tags = hashtags.toptags.split(',');
+  for (let x = 0; x < tags.length; x++) {
+    if (tags[x] != undefined) {
+      hashDict[months[index]].push(`#${tags[x]}`);
+    }
+  }
+  return hashDict
 }

@@ -1,28 +1,31 @@
 let tweets;
-
-window.onload = function() {
-
-  const Q = d3.queue();
-
-  Q.defer(d3.csv, "data/hashtags/htmaga.csv")
-   .await(processTweets)
-
-  function processTweets(error, response) {
-
-    if (error) throw error;
-
-    tweets = response;
+let tweetCollection;
 
 
-    tweetCollection = [];
 
-    for (let i = 0; i < tweets.length; i++) {
-      tweetCollection[`tweet_${i}`] = {}
-      let words = Object.values(tweets[i])[0].split(' ');
+const Q = d3.queue();
 
-      tweetCollection[`tweet_${i}`]['words'] = words;
-      tweetCollection[`tweet_${i}`][`score`] = processSentiment(words);
-    }
+Q.defer(d3.csv, "data/hashtags/htmaga.csv")
+ .await(processTweets)
+
+function processTweets(error, response) {
+
+  if (error) throw error;
+
+  tweets = response;
+
+
+  tweetCollection = [];
+  dictionary = getDictionary();
+
+  for (let i = 0; i < 2; i++) {
+    tweetCollection[`tweet_${i}`] = {}
+    let words = Object.values(tweets[i])[0].split(' ');
+
+    tweetCollection[`tweet_${i}`]['words'] = words;
+    dictionary =
+    tweetCollection[`tweet_${i}`][`score`] = processSentiment(words, dictionary);
   }
-  setTimeout(() => console.log(tweetCollection), 3000);
+  console.log(tweetCollection)
 }
+// setTimeout(() => console.log(tweetCollection), 3000);

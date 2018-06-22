@@ -6,24 +6,34 @@
         <title>Trolls</title>
 
         <!-- libraries -->
+        <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="libraries/d3/d3.slider.js"></script>
+        <script src="scripts/slide.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+        <script src="scripts/helpers.js"></script>
+        <script src="scripts/cloud.js"></script>
+        <script src="scripts/wordcloud.js"></script>
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
         <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
-
+        <script src="libraries/d3/d3.v4.js"></script>
+        <script src="scripts/brushzoom.js"></script>
 
         <!-- scripts -->
-        <script src="scripts/helpers.js"></script>
         <!-- <script src="scripts/tweetvolume.js"></script> -->
-        <script src="scripts/brushzoom.js"></script>
-        <script src="scripts/hashtags.js"></script>
+        <!-- <script src="scripts/brushzoom.js"></script> -->
+        <!-- <script src="scripts/hashtags.js"></script> -->
+
         <!-- <script src="scripts/linegraph.js"></script> -->
         <!-- <script src="scripts/parsetweets.js"></script> -->
 
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
+        <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
 
 
       </head>
@@ -42,13 +52,13 @@
            <a class="nav-link" href="about.html">About</a>
          </li>
          <li class="nav-item">
-           <a class="nav-link" href="sources.html">Sources</a>
+           <a class="nav-link" href="#">Design</a>
          </li>
          <li class="nav-item">
-           <li class="nav-link" id="data1">Europe by internet access</li>
+           <li class="nav-link" id="data1">Discussion</li>
          </li>
          <li class="nav-item">
-           <li class="nav-link" id="data2">Europe by music listeners</li>
+           <li class="nav-link" id="data2">Sources</li>
          </li>
        </ul>
      </div>
@@ -62,7 +72,11 @@
      </div>
    </div>
    <div class="seperator"></div>
-   <svg id="linechart" width="1300" height="600"></svg>
+   <div id="linechart-background">
+     <svg id="linechart" width="1300" height="600"></svg>
+   </div>
    <div class="seperator"></div>
+   <div id="chart" width="100%" height="600"></div>
+   <!-- <svg id="timeSlider"></svg> -->
     </body>
 </html>

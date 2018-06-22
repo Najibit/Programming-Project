@@ -1,0 +1,40 @@
+.nav-item-active {
+  padding-right: 20px;
+}
+
+.container {
+  width: 100%;
+  height: 500px;
+  background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/f5343236321073.5717a32ce906c.png');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: repeat;
+}
+
+h1 {
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 0px;
+  width: 60%;
+  display: block;
+  margin: auto;
+  font-weight: bold;
+  font-size: 50px;
+  color: pink;
+}
+
+body {
+  padding-top: 3em;
+  background-image: url('https://background-tiles.com/overview/grey/textures/large/5014.png');
+  background-repeat: repeat;
+}
+
+.starter-template {
+  padding-top: 200px;
+}
+
+.seperator {
+  display: block;
+  width: 100%;
+  height: 10px;
+  background-color: black;
+}

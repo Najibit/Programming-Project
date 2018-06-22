@@ -1,11 +1,11 @@
-window.onload = function() {
+function brushAndZoom() {
 
-  const SVG = d3.select('#linechart'),
+  const lineSVG = d3.select('#linechart'),
               margin1 = {top: 20, right: 20, bottom: 110, left: 40},
               margin2 = {top: 525, right: 20, bottom: 30, left: 40},
-              width   = +SVG.attr('width') - margin1.left - margin1.right,
-              height  = +SVG.attr('height') - margin1.top - margin1.bottom,
-              height2 = +SVG.attr('height') - margin2.top - margin2.bottom;
+              width   = +lineSVG.attr('width') - margin1.left - margin1.right,
+              height  = +lineSVG.attr('height') - margin1.top - margin1.bottom,
+              height2 = +lineSVG.attr('height') - margin2.top - margin2.bottom;
 
   let parseDate = d3.timeParse('%Y-%m-%d');
 
@@ -40,18 +40,18 @@ window.onload = function() {
                 .y0(height2)
                 .y1(d => y2(d.num));
 
-  SVG.append('defs')
+  lineSVG.append('defs')
      .append('clipPath')
      .attr('id', 'clip')
      .append('rect')
      .attr('width', width)
      .attr('height', height);
 
-  let focus = SVG.append('g')
+  let focus = lineSVG.append('g')
                  .attr('class', 'focus')
                  .attr('transform', `translate(${margin1.left}, ${margin1.top})`);
 
-  let context = SVG.append('g')
+  let context = lineSVG.append('g')
                    .attr('class', 'context')
                    .attr('transform', `translate(${margin2.left}, ${margin2.top})`);
 
@@ -93,7 +93,7 @@ window.onload = function() {
         .call(brush)
         .call(brush.move, x.range());
 
-    SVG.append('rect')
+    lineSVG.append('rect')
         .attr('class', 'zoom')
         .attr('width', width)
         .attr('height', height)
@@ -112,7 +112,7 @@ window.onload = function() {
     focus.select('.area').attr('d', area);
     focus.select('.axis--x').call(xAxis);
 
-    SVG.select('.zoom').call(zoom.transform, d3.zoomIdentity
+    lineSVG.select('.zoom').call(zoom.transform, d3.zoomIdentity
        .scale(width / (s[1] - s[0]))
        .translate(-s[0], 0));
   }
@@ -143,3 +143,4 @@ window.onload = function() {
     return d;
   }
 }
+brushAndZoom();
