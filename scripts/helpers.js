@@ -120,7 +120,7 @@ function groupHashtags(hashtags, hashDict, index) {
   let months = getMonths();
   let tags = hashtags.toptags.split(',');
   for (let x = 0; x < tags.length; x++) {
-    if (tags[x] != undefined) {
+    if (tags[x] != undefined && hashDict[months[index]].length < 75) {
       hashDict[months[index]].push(`#${tags[x]}`);
     }
   }

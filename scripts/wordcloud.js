@@ -1,18 +1,27 @@
-var text_string = "Of course that’s your contention. You’re a first year grad student. You just got finished readin’ some Marxian historian, Pete Garrison probably. You’re gonna be convinced of that ’til next month when you get to James Lemon and then you’re gonna be talkin’ about how the economies of Virginia and Pennsylvania were entrepreneurial and capitalist way back in 1740. That’s gonna last until next year. You’re gonna be in here regurgitating Gordon Wood, talkin’ about, you know, the  Pre-Revolutionary utopia and the capital-forming effects of military mobilization… ‘Wood drastically underestimates the impact of social distinctions predicated upon wealth, especially inherited wealth.’ You got that from Vickers, Work in Essex County, page 98, right? Yeah, I read that, too. Were you gonna plagiarize the whole thing for us? Do you have any thoughts of your own on this matter? Or do you, is that your thing? You come into a bar. You read some obscure passage and then pretend, you pawn it off as your own, as your own idea just to impress some girls and embarrass my friend? See, the sad thing about a guy like you is in 20 years, you’re gonna start doin’ some thinkin’ on your own and you’re gonna come up with the fact that there are two certainties in life. One: don’t do that. And two: you dropped a hundred and fifty grand on a fuckin’ education you coulda got for a dollar fifty in late charges at the public library.";
 let hashtags;
 let hashMonths = {};
+let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 window.onload = function() {
 getHashTags();
 brushAndZoom();
 }
-function drawWordCloud(text_string){
+
+function removeHashTags(month) {
+    d3.selectAll(`text#hashtag-${month}`)
+    .transition().duration(1000).style("font-size", "2px")
+    .transition().duration(1000).remove();
+    console.log(`Removed hashtag-${month}!`)
+}
+
+function drawWordCloud(allTags, month){
 
 
   var common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
 
   var word_count = {};
-
-  var words = text_string.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+  // console.log(allTags[month], month)
+  var words = allTags[month].split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
     if (words.length == 1){
       word_count[words[0]] = 1;
     } else {
@@ -53,19 +62,22 @@ function drawWordCloud(text_string){
     .on("end", draw)
     .start();
 
-  function draw(words) {
-    d3.select('body').append("svg")
+    d3.select('#chart').append("svg")
         .attr("width", width)
         .attr("height", height)
         .attr('id', 'wordcloud')
+
+  function draw(words) {
+
+    d3.select('#wordcloud')
       .append("g")
         .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
       .selectAll("text")
         .data(words)
       .enter().append("text")
-        .attr('id', 'hashtag')
+        .attr('id', `hashtag-${month}`)
         .style("font-size", "2px")
-        .transition().duration(4000)
+        .transition().duration(2000)
         .style("font-size", function(d) { return xScale(d.value) + "px"; })
         .style("font-family", "Impact")
         .style("fill", function(d, i) { return fill(i); })
@@ -98,7 +110,6 @@ function getHashTags() {
 
     hashtags = response;
 
-    let months = getMonths();
 
     for (let i = 0; i < months.length; i++) {
       hashMonths[months[i]] = [];
@@ -165,8 +176,14 @@ function getHashTags() {
     for (let i = 0; i < months.length; i++) {
         hashMonths[months[i]] = hashMonths[months[i]].join(' ');
     }
-    // console.log(hashMonths)
-    drawWordCloud(hashMonths['apr']);
+
+    // Initialize slider
+    var slider = d3.slider().min(0).max(12).ticks(12).showRange(true).value(0);
+
+    d3.select('#slider').call(slider);
+
+
+    drawWordCloud(hashMonths, 'jan');
     return hashMonths;
   }
 }

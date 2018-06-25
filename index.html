@@ -8,8 +8,11 @@
         <!-- libraries -->
         <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
         <script src="http://d3js.org/d3.v3.min.js"></script>
-        <script src="libraries/d3/d3.slider.js"></script>
-        <script src="scripts/slide.js"></script>
+        <!-- <script src="libraries/d3/d3.slider.js"></script> -->
+        <!-- <script src="scripts/slide.js"></script> -->
+        <link rel="stylesheet" type="text/css" href="libraries/slider/d3.slider.css" media="screen" />
+        <script src="libraries/slider/d3.v3.min.js"></script>
+        <script src="libraries/slider/d3.slider.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3-queue.v3.min.js"></script>
         <script src="scripts/helpers.js"></script>
@@ -20,7 +23,7 @@
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
         <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
-        <script src="libraries/d3/d3.v4.js"></script>
+        <!-- <script src="libraries/d3/d3.v4.js"></script> -->
         <script src="scripts/brushzoom.js"></script>
 
         <!-- scripts -->
@@ -76,7 +79,11 @@
      <svg id="linechart" width="1300" height="600"></svg>
    </div>
    <div class="seperator"></div>
-   <div id="chart" width="100%" height="600"></div>
+   <div id="wordcloudarea">
+     <div id="slider"></div>
+     <div id="chart" width="100%" height="600">
+     </div>
+   </div>
    <!-- <svg id="timeSlider"></svg> -->
     </body>
 </html>
