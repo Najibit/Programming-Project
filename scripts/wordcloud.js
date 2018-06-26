@@ -2,20 +2,38 @@ let hashtags;
 let hashMonths = {};
 let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
                 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+var width =  1300;// $("#chart").width();
+var height = 600; // $("#chart").height();
+
 window.onload = function() {
 getHashTags();
 brushAndZoom();
 }
 
 function removeHashTags(month) {
-    d3.selectAll(`text#hashtag-${month}`)
-    .transition().duration(1000).style("font-size", "2px")
+  for (let i = 0; i < months.length; i++) {
+    if (!(months[i] == month)) {
+    d3.selectAll(`text#hashtag-${months[i]}`)
+    .transition().duration(1000).style("opacity", 0).style("font-size", "0px")
     .transition().duration(1000).remove();
-    console.log(`Removed hashtag-${month}!`)
+    }
+  }
 }
 
-function drawWordCloud(allTags, month){
+function createSVG(width, height) {
 
+  d3.select('#chart').append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr('id', 'wordcloud')
+
+  d3.select("svg#linechart").append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr('id', 'linegraph')
+}
+
+function drawWordCloud(allTags, month, currentMonth){
 
   var common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
 
@@ -38,8 +56,9 @@ function drawWordCloud(allTags, month){
     }
 
   var svg_location = "#chart";
-  var width =  1300;// $("#chart").width();
-  var height = 600; // $("#chart").height();
+
+
+  // createSVG(width, height);
 
   var fill = d3.scale.category20();
 
@@ -62,14 +81,14 @@ function drawWordCloud(allTags, month){
     .on("end", draw)
     .start();
 
-    d3.select('#chart').append("svg")
-        .attr("width", width)
-        .attr("height", height)
-        .attr('id', 'wordcloud')
+    // d3.select('#chart').append("svg")
+    //     .attr("width", width)
+    //     .attr("height", height)
+    //     .attr('id', 'wordcloud')
 
   function draw(words) {
 
-    d3.select('#wordcloud')
+    d3.select('svg#wordcloud')
       .append("g")
         .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
       .selectAll("text")
@@ -77,7 +96,9 @@ function drawWordCloud(allTags, month){
       .enter().append("text")
         .attr('id', `hashtag-${month}`)
         .style("font-size", "2px")
+        .style("opacity", 0)
         .transition().duration(2000)
+        .style("opacity", 1)
         .style("font-size", function(d) { return xScale(d.value) + "px"; })
         .style("font-family", "Impact")
         .style("fill", function(d, i) { return fill(i); })
@@ -87,8 +108,9 @@ function drawWordCloud(allTags, month){
         })
         .text(function(d) { return d.key; });
   }
-
   d3.layout.cloud().stop();
+
+  removeHashTags(currentMonth);
 }
 
 function getHashTags() {
@@ -182,7 +204,7 @@ function getHashTags() {
 
     d3.select('#slider').call(slider);
 
-
+    createSVG(width, height)
     drawWordCloud(hashMonths, 'jan');
     return hashMonths;
   }

@@ -55,73 +55,93 @@ function getMonths() {
   return months
 }
 
+function getDict() {
 
+  let dictionary = {};
+  dictionary['positive'] = [];
+  dictionary['negative'] = [];
 
-function processSentiment(tokens) {
-  console.log(tokens);
+  const Q = d3.queue();
 
-    let dictionary = {};
-    dictionary['positive'] = [];
-    dictionary['negative'] = [];
-    let negCount = 0
+  Q.defer(d3.csv, "data/sentiments/positive-words.csv")
+   .defer(d3.csv, "data/sentiments/negative-words.csv")
+   .awaitAll(processDict)
 
-    const Q = d3.queue();
+  function processDict(error, response) {
 
-    Q.defer(d3.csv, "data/sentiments/positive-words.csv")
-     .defer(d3.csv, "data/sentiments/negative-words.csv")
-     .awaitAll(processDict)
+    if (error) throw error;
 
-    function processDict(error, response) {
+    positiveWords = response[0];
+    negativeWords = response[1];
 
-      if (error) throw error;
-
-      positiveWords = response[0];
-      negativeWords = response[1];
-
-      for (let i = 0; i < positiveWords.length; i++) {
-        dictionary.positive.push(positiveWords[i].words);
-      }
-
-      for (let i = 0; i < negativeWords.length; i++) {
-        dictionary.negative.push(negativeWords[i].words);
-        negCount++;
-      }
-      console.log(dictionary);
-      return calculateSentiment(dictionary, tokens);
+    for (let i = 0; i < positiveWords.length; i++) {
+      dictionary.positive.push(positiveWords[i].words);
     }
+
+    for (let i = 0; i < negativeWords.length; i++) {
+      dictionary.negative.push(negativeWords[i].words);
+    }
+  }
+    return dictionary
 }
 
-function calculateSentiment(dictionary, tokens) {
+// function processSentiment(tokens) {
+//   console.log(tokens);
+//
+//     let dictionary = {};
+//     dictionary['positive'] = [];
+//     dictionary['negative'] = [];
+//     let negCount = 0
+//
+//     const Q = d3.queue();
+//
+//     Q.defer(d3.csv, "data/sentiments/positive-words.csv")
+//      .defer(d3.csv, "data/sentiments/negative-words.csv")
+//      .awaitAll(processDict)
+//
+//
+//       console.log(dictionary);
+//       return calculateSentiment(dictionary, tokens);
+//     }
+// }
 
-  let score = 0
-  console.log(score);
+let dict = getDict();
+
+function calculateSentiment(tokens) {
+
+  let score = 0;
+  let dictionary = dict;
+  let negWords = 0;
+  let posWords = 0;
 
   for (let i = 0; i < tokens.length; i++) {
-    console.log(tokens[i].toLowerCase())
 
     for (let j = 0; j < 2006; j++) {
-
       if (dictionary.positive[j] == tokens[i].toLowerCase()) {
-        score++;
+        posWords++;
       }
     }
 
     for (let k = 0; k < 4783; k++) {
       if (dictionary.negative[k] == tokens[i].toLowerCase()) {
-        score--;
+        negWords++;
       }
     }
   }
-  console.log(score);
-  return score
+  let sentiments = {}
+  sentiments['Positive Words'] = posWords;
+  sentiments['Negative Words'] = negWords;
+  return sentiments
 }
 
 function groupHashtags(hashtags, hashDict, index) {
   let months = getMonths();
   let tags = hashtags.toptags.split(',');
+  let counter = 0;
   for (let x = 0; x < tags.length; x++) {
-    if (tags[x] != undefined && hashDict[months[index]].length < 75) {
+    if (tags[x] != undefined && counter < 30) { // NOG NAAR KIJKEN
       hashDict[months[index]].push(`#${tags[x]}`);
+      counter++;
     }
   }
   return hashDict

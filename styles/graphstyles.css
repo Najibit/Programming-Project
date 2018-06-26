@@ -5,7 +5,6 @@
   font-family: Courier, monospace;
 }
 
-
 #monthrects:hover {
   fill: rgb(0, 255, 0, 0.8)
 }
@@ -88,6 +87,19 @@ rect.zoom {
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   top: -3px;
   left: -7px;
+}
+
+.d3slider-rect-value {
+  fill: green;
+}
+
+.d3slider-rect-range {
+  fill: lightgreen;
+}
+
+.seperator-top {
+  position: fixed;
+  top: 56px;
 }
 
 /* #slider {

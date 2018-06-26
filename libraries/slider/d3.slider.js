@@ -143,21 +143,14 @@ d3.slider = function module() {
     var newValue = scale.invert(pos - margin.left);
 
     months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
-                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-
-    console.log(`The current month = ${currentMonth}. \n
-                 The month found = ${months[parseInt(newValue)]}. \n
-                 Which evaluates as: ${(months[parseInt(newValue)] == currentMonth) == false}`)
-
+                    'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
       if ((months[parseInt(newValue)] == currentMonth) == false) {
-        console.log(`Current month = ${currentMonth}`)
-        console.log(`New month = ${months[parseInt(newValue)]}`)
-        removeHashTags(currentMonth);
         currentMonth = months[parseInt(newValue)];
-        drawWordCloud(hashMonths, months[parseInt(newValue)]);
+        // removeHashTags(currentMonth);
+        drawWordCloud(hashMonths, months[parseInt(newValue)], currentMonth);
       }
-    
+
 
 
 
