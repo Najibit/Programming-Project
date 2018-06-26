@@ -6,7 +6,7 @@ function createDonut() {
 
   let color = d3.scale.ordinal().range(['red', 'green'])
 
-  const DONUT = d3.select('body').append('svg').attr('width', 1500).attr('height', 1500).attr('id', 'donut-chart')
+  const DONUT = d3.select('body').append('svg').attr('width', 700).attr('height', 700).attr('id', 'donut-chart')
 
   let group = DONUT.append('g').attr('transform', 'translate(300, 300)')
 
