@@ -14,7 +14,7 @@ function removeHashTags(month) {
   for (let i = 0; i < months.length; i++) {
     if (!(months[i] == month)) {
     d3.selectAll(`text#hashtag-${months[i]}`)
-    .transition().duration(1000).style("opacity", 0).style("font-size", "0px")
+    .transition().duration(1000).style("opacity", 0)
     .transition().duration(1000).remove();
     }
   }
