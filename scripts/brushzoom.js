@@ -143,4 +143,4 @@ function brushAndZoom() {
     return d;
   }
 }
-brushAndZoom();
+window.onload = function() { brushAndZoom(); }

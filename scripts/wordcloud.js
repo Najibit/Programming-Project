@@ -7,7 +7,7 @@ var height = 600; // $("#chart").height();
 
 window.onload = function() {
 getHashTags();
-brushAndZoom();
+createDonut();
 }
 
 function removeHashTags(month) {
