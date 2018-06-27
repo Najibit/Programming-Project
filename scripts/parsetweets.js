@@ -1,52 +1,48 @@
-let tweets;
-let tweetCollection;
+function gimmeSentiments() {
 
-const Q = d3.queue();
+  const Q = d3.queue();
 
-Q.defer(d3.csv, "data/hashtags/htmaga.csv")
- .defer(d3.csv, "data/hashtags/htblacklm.csv")
- .defer(d3.csv, "data/hashtags/htclinton.csv")
- .defer(d3.csv, "data/hashtags/httrump.csv")
- .defer(d3.csv, "data/hashtags/htsanders.csv")
- .defer(d3.csv, "data/hashtags/htcruz.csv")
+  let allTweets;
+  let allSentiments;
 
- .awaitAll(processTweets)
+  Q.defer(d3.csv, "data/hashtags/htmaga.csv")
+   .defer(d3.csv, "data/hashtags/htblacklm.csv")
+   .defer(d3.csv, "data/hashtags/htclinton.csv")
+   .defer(d3.csv, "data/hashtags/httrump.csv")
+   .awaitAll(processTweets)
 
-function processTweets(error, response) {
+  function processTweets(error, response) {
 
-  if (error) throw error;
+    if (error) throw error;
 
-   tweets = response[0];
+    allTweets = {};
+    allSentiments = {};
+    comTags = ['#MAGA', '#BLACKLIVESMATTER', '#CLINTON', '#TRUMP'];
 
-
-  tweetCollection = [];
-  let negativity = 0;
-  let positivity = 0;
-  let neutrality = 0;
-
-  for (let i = 0; i < tweets.length; i++) {
-    tweetCollection[`tweet_${i}`] = {}
-    let words = Object.values(tweets[i])[0].split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
-    let sentimentsTotal = calculateSentiment(words);
-    // let sentiment = "neutral";
+    for (let i = 0; i < comTags.length; i++) {
+      allTweets[comTags[i]] = response[i];
+      allSentiments[comTags[i]] = [];
+    }
 
 
-    negativity += sentimentsTotal['Negative Words'];
-    positivity += sentimentsTotal['Positive Words'];
 
-    // if (score < 0) {
-    //   sentiment = "negative";
-    //   negativity++;
-    // } else if (score > 0) {
-    //   sentiment = "positive";
-    //   positivity++;
-    // } else {
-    //   neutrality++;
-    // }
-    tweetCollection[`tweet_${i}`]['words'] = words;
-    // tweetCollection[`tweet_${i}`][`score`] = score;
-    // tweetCollection[`tweet_${i}`][`sentiment`] = sentiment;
+    for (let i = 0; i < comTags.length; i++) {
+      let negativity = 0;
+      let positivity = 0;
+
+      for (let j = 0; j < allTweets[comTags[i]].length; j++) {
+
+        let message = Object.values(allTweets[comTags[i]][j])[0]
+        let words = message.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+        let sentiments = calculateSentiment(words);
+
+
+        negativity += sentiments['Negative Words'];
+        positivity += sentiments['Positive Words'];
+      }
+
+        allSentiments[comTags[i]].push(negativity, positivity)
+    }
+    getSentiments(allSentiments)
   }
-  console.log(negativity, positivity)
 }
-// setTimeout(() => console.log(tweetCollection), 3000);

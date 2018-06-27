@@ -87,3 +87,45 @@ body {
   position: fixed;
   left: 17px;
 }
+
+#donut-chart-background {
+  width: 500px;
+  height: 500px;
+  float: right;
+  display: inline-block;
+  z-index: 150;
+  background-image: url("http://i.imgur.com/qn7n6Qd.png"), url('https://media3.giphy.com/media/HOJpCsJ8sj6Lu/giphy.gif');
+  background-size: cover;
+  border-style: groove;
+  border-width: 15px;
+  border-color: rgba(50, 50, 50, 0.5);
+  margin-right: 10px;
+}
+
+
+#donut-chart {
+  float: left;
+  z-index: 100;
+}
+
+
+.rep-tag {
+  font-family: impact;
+  font-size: 50px;
+  color: red;
+  display: inline;
+}
+
+.dem-tag {
+  font-family: impact;
+  font-size: 50px;
+  color: blue;
+  display: inline;
+}
+
+#sentiment-title {
+  font-family: Impact;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 50%;
+}
