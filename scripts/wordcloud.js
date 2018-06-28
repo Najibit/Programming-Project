@@ -1,13 +1,34 @@
 let hashtags;
 let hashMonths = {};
-let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
-                'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 var width =  1300;// $("#chart").width();
 var height = 600; // $("#chart").height();
 
 window.onload = function() {
 getHashTags();
-createDonut();
+updateCloud();
+$(".seperator").hover(function() {
+  $('html, body').animate({
+      scrollTop: $("#sep-bot").offset().top
+  }, 1000);
+});
+}
+
+function updateCloud() {
+
+
+  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
+  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
+  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
+  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
+  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
+  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
+  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
+  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
+  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
+  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
+  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
+  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
 }
 
 function removeHashTags(month) {

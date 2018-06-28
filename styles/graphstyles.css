@@ -41,6 +41,7 @@ rect.zoom {
 #linechart {
   display:block;
   margin:auto;
+  margin-bottom: 50px;
 }
 
 #hashtag:hover {
@@ -101,6 +102,10 @@ rect.zoom {
   position: fixed;
   top: 56px;
 }
+
+/* .tick {
+  visibility: hidden;
+} */
 
 /* #slider {
   background-color: pink;

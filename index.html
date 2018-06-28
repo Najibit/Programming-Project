@@ -1,49 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
+<head>
 
-        <title>Trolls</title>
+    <meta charset="utf-8">
 
-        <script src="libraries/d3/d3.v4.js"></script>
+    <title>Trolls</title>
 
-        <!-- libraries -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="scripts/helpers.js"></script>
+    <!-- libraries -->
+    <script src="libraries/d3/d3.v4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+    <!-- scripts -->
+    <script src="scripts/helpers.js"></script>
+    <script src="scripts/brushzoom.js"></script>
 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
-        <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-        <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
 
-        <script src="scripts/brushzoom.js"></script>
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
+    <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
+    <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
 
-        <!-- scripts -->
-        <!-- <script src="scripts/tweetvolume.js"></script> -->
-        <!-- <script src="scripts/hashtags.js"></script> -->
+  </head>
+  <body>
+    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+      <div id="logo-box">
+        <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
+        <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
+        <a href="https://github.com/Najibit/Programming-Project" onclick="window.open(this.href,'_blank');return false;"><img src="http://pluspng.com/img-png/github-octocat-logo-vector-png-github-icon-1600.png" class="github" alt="View my Github"></a>
+        <a class="navbar-brand" href="index.html">Trolls</a>
+      </div>
 
-        <!-- <script src="scripts/linegraph.js"></script> -->
-        <script src="scripts/parsetweets.js"></script>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <!-- styles -->
-        <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
-        <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
-
-
-      </head>
-      <body>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
-          <div id="logo-box">
-          <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
-          <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
-          <a class="navbar-brand" href="index.html">Trolls</a>
-        </div>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-       <span class="navbar-toggler-icon"></span>
-     </button>
-     <!-- <a class="navbar-brand" href="#">Trolls</a> -->
-     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
        <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
            <a class="nav-link" href="linked.html">Home<span class="sr-only">(current)</span></a>
@@ -63,23 +59,94 @@
        </ul>
      </div>
    </nav>
+
    <div class="seperator"></div>
    <div class="seperator-top"></div>
-   <div class="container">
 
+   <div class="container">
      <div class="starter-template">
        <h1 class="header-title">The Ultimate Revelation Of Russian Trolls</h1>
      </div>
    </div>
+
    <div class="seperator"></div>
+   
+   <div class="text-area">
+
+   <br>
+
+   <div id="index-pic"></div>
+
+   <p class="article" id="art-small">
+     <ht>Trolls<br></ht>
+
+     Cassy Hayes and Jasmine Coleman were among the first fans to arrive outside
+     the Ronald Reagan UCLA Medical Center in Los Angeles where Michael Jackson
+     was brought and later pronounced dead. How had Hayes, 25, and Coleman, 21,
+     heard the news so quickly?<br><br></p>
+
+   <p class="article" id="art-small"><b>Twitter.</b><br><br></p>
+
+   <p class="article" id="art-small"> The two young women had learned about Jackson's health like so many who
+     get their news nowadays: by reading the ever-flowing feed of real-time
+     information on the microblogging service.<br><br>
+
+     Jackson's unexpected death at 50 was just one of the many news event
+      where Twitter played a central role. But just as quickly as Twitter
+      has emerged as a news source, so, too, has its susceptibility to false
+      rumors and false news become abundantly apparent.<br><br></p>
+
+    <p class=“article” id="art-small">Twitter’s constantly updating record of
+      up-to-the-minute reaction has in some instances threatened to usurp media
+      coverage of breaking news. It has also helped many celebrities, athletes
+      and politicians bypass the media to get their message directly to their
+      audience. These days it is no surprise to see politicians in the US
+      converse with each other through the medium. And as our eyes are turned to
+      Twitter, so has our way of collecting information about the world.
+      There is something about the short, quick messages (of a maximum of 280
+      characters) that fits within our way of life at the moment: it has to be
+      short, but especially quick.<br><br></p>
+
+    <p class="article">In January, Twitter emailed nearly 700,000 users to tell
+      them they may have engaged with the Russian accounts. Less than two weeks
+      later, Twitter announced the number of users notified had more than doubled.
+      These were Twitter users set-up from Russia and engaging in inflammatory
+      tweets, with the goal of disrupting and dividing a nation’s public,
+      and thus their political policies.<br><br>
+
+      Thankfully, at the request of NBC News, three sources familiar with
+      Twitter's data systems cross-referenced the list of names released by
+      Congress, excluding any account that Twitter later restored, to create
+      a partial database of tweets that could be recovered from the suspended
+      accounts.<br><br>
+
+      I took a deeper look in to this database, to see if I saw something
+      unusual. There exists this idea that Russian trolls on Twitter engaged
+      in the spread of fake news and support,
+      with the aim of influencing an election, in particular the 2016 United
+      States Presidential Elections, which was won by Donald Trump in November.
+      How much of this is actually true?<br><br>
+
+      I started looking for some evidence to support this claim, and looked at
+      how many tweets were actually sent out by these trolls. I displayed the
+      data in the (interactive) chart at the bottom of this page. Do you also
+      notice something… <i>particular?
+      <br><br><hint>Hint: the elections were in September-October-November</hint></i><br><br>
+
+      <gt>Total amount of Tweets sent out by Russian Troll accounts in 2016</gt>
+    </p>
+
+      </div>
+
    <div id="linechart-background">
      <svg id="linechart" width="1300" height="600"></svg>
    </div>
-   <div class="seperator"></div>
    <div id="wordcloudarea">
      <div id="slider"></div>
      <div id="chart" width="100%" height="600"></div>
    </div>
-   <!-- <svg id="timeSlider"></svg> -->
     </body>
+    <footer>
+      <a href="second.html"><button class="fbutton" id="word-next-button"> READ MORE </button></a>
+    </footer>
 </html>

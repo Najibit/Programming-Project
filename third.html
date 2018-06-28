@@ -35,6 +35,8 @@
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
         <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
+        <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
+
 
 
       </head>
@@ -43,6 +45,8 @@
           <div id="logo-box">
           <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
           <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
+          <a href="https://github.com/Najibit/Programming-Project"><img src="http://pluspng.com/img-png/github-octocat-logo-vector-png-github-icon-1600.png" class="github" alt="View my Github" target="_blank"></a>
+
           <a class="navbar-brand" href="index.html">Trolls</a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,11 +83,21 @@
    </div>
    <div class="seperator"></div>
 
-   <h2 class="rep-tag" id="TRUMP">#TRUMP</h2>
-   <h2 class="rep-tag" id="MAGA">#MAGA</h2> <br>
-   <h2 class="dem-tag" id="CLINTON">#CLINTON</h2>
-   <h2 class="dem-tag" id="BLACKLIVESMATTER">#BLACKLIVESMATTER</h2>
+   <button><h2 class="rep-tag" id="TRUMP">#TRUMP</h2></button>
+   <button><h2 class="rep-tag" id="MAGA">#MAGA</h2></button><br>
+   <button><h2 class="dem-tag" id="CLINTON">#CLINTON</h2></button>
+   <button><h2 class="dem-tag" id="BLACKLIVESMATTER">#BLACKLIVESMATTER</h2></button>
+   <h2 class="titles">Communities<h2>
+   <p class="article">
 
-   <div id="donut-chart-background" width="500" height="500"></div>
+   </p>
+
+   <div id="donut-chart-background" width="500" height="500">
+     <h5 id="smessage">Click on one of the <tag> #tags </tag> in the text to see a sentiment analysis: view the count of <neg>negative</neg> and
+       <pos>positive</pos> words used in tweets containing that <tag> #tag </tag>.</h5>
+   </div>
   </body>
+  <footer>
+    <a href="second.html"><button class="fbutton" id="word-back-button"> BACK </button></a>
+  </footer>
 </html>

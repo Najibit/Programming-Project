@@ -38,6 +38,8 @@
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
         <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
+        <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
+
 
 
       </head>
@@ -46,6 +48,8 @@
           <div id="logo-box">
           <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
           <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
+          <a href="https://github.com/Najibit/Programming-Project"><img src="http://pluspng.com/img-png/github-octocat-logo-vector-png-github-icon-1600.png" class="github" alt="View my Github" target="_blank"></a>
+
           <a class="navbar-brand" href="index.html">Trolls</a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,12 +84,85 @@
        <h1 class="header-title">The Ultimate Revelation Of Russian Trolls</h1>
      </div>
    </div>
-   <div class="seperator"></div>
+   <div class="seperator" id="sep-bot"></div>
+   <div class="text-area">
+
+   <br>
+
+   <div id="word-pic"></div>
+
+   <p class="article" id="art-small">
+     <ht>#Tags<br></ht>
+
+     I wondered, what did these trolls tweet about? The database I researched
+     had an overview of all the actual tweets that were sent out by these
+     Russian users, but reading them all would take a long time and making a
+     subsequent conclusion would take even longer.<br><br></p>
+
+   <p class="article" id="art-small">Thankfully, Twitter users regulary engage
+     in the use of hashtags: a word or phrase preceded by a hash sign (#),
+     used on social media websites and applications, especially Twitter,
+     to identify messages on a specific topic. By looking at these tags, I was
+     able to get a quick overview at the topics of these tweets, to see if they
+     were actually tweeting about the elections. And they were.<br><br>
+
+     Even more so, I couldn't even find a <b>single</b> tag that didn't contain
+     anything related to something in the political agenda. The amount of tags about the presidential elections is quite literally, insane.<br><br></p>
+
+    <p class=“article” id="art-small">Take a look at the word cloud I placed at
+      the bottom of this page. It contains all hashtags used, seperated by the
+      month of the year (2016). The bigger a tag, the more frequently it was used.<br><br></p>
+
+    <p class="article">Before I started exploring the data base, I had this idea
+      that Russian trolls had the aim of making Donald Trump president, so I
+      expected all tags to support the Trump campaign, and to disapprove the
+      campaign of his primary opponent, Hillary Clinton. Yet they didn't.
+      Yeah, you see a lot of <tag>#Trump</tag> and <tag>#MakeAmericaGreatAgain</tag>,
+      but that's not all. There are also a lot of tweets containing tags
+      <i>supporting</i> <tag>#Clinton</tag> and the <tag>#BlackLivesMatter</tag>
+      campaign. Why? Why would you support both sides of the spectrum? I was clueless.<br><br>
+
+      And then it hit me. I saw a fascinating
+      <a href="https://www.youtube.com/watch?v=zgmg2VFX058"><tag>#video</tag></a>
+      on YouTube, about an interview with an ex-KGB agent discussing Russian
+      propaganda tactics. In short, he talks about how they (during the Soviet-era)
+      tried to disrupt other nations by splitting them up in seperate groups and
+      pushing both groups to their respective (ideological) extremes. "Divide and
+      conquer", as some would say. They were creating seperate <tag>#communities</tag>,
+      and pit them against each other. Interesting. <br><br>
+
+      Take a look for yourself. See how these trolls tweeted over 2016, and take
+      a specific look at how they tweeted in the months leading up to the Presidential
+      elections. What do you notice?<br><br>
+
+      <gt>Most used <tag>#hashtags</tag> by Russian Troll accounts in 2016</gt>
+    </p>
+
+      </div>
+    <br><br>
    <div id="wordcloudarea">
-     <div id="slider"></div>
+     <div id="slider" height="60px"></div>
+     <div class="month-buttons-div">
+     <button class="month-buttons" id="jan"><h2 class="m">January<h2></button>
+     <button class="month-buttons" id="feb"><h2 class="m">February<h2></button>
+     <button class="month-buttons" id="mar"><h2 class="m">March<h2></button>
+     <button class="month-buttons" id="apr"><h2 class="m">April<h2></button>
+     <button class="month-buttons" id="may"><h2 class="m">May<h2></button>
+     <button class="month-buttons" id="jun"><h2 class="m">June<h2></button>
+     <button class="month-buttons" id="jul"><h2 class="m">July<h2></button>
+     <button class="month-buttons" id="aug"><h2 class="m">August<h2></button>
+     <button class="month-buttons" id="sep"><h2 class="m">September<h2></button>
+     <button class="month-buttons" id="oct"><h2 class="m">October<h2></button>
+     <button class="month-buttons" id="nov"><h2 class="m">November<h2></button>
+     <button class="month-buttons" id="dec"><h2 class="m">December<h2></button>
+     </div>
      <div id="chart" width="100%" height="600">
      </div>
    </div>
    <!-- <svg id="timeSlider"></svg> -->
     </body>
+    <footer>
+      <a href="index.html"><button class="fbutton" id="word-back-button"> BACK </button></a>
+      <a href="third.html"><button class="fbutton" id="word-next-button"> READ MORE </button></a>
+    </footer>
 </html>
