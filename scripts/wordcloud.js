@@ -4,45 +4,50 @@ let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oc
 var width =  1300;// $("#chart").width();
 var height = 600; // $("#chart").height();
 
+let currentMonth = 'jan';
+
+
 window.onload = function() {
 getHashTags();
 updateCloud();
-$(".seperator").hover(function() {
+$(".month-buttons").click(function() {
   $('html, body').animate({
-      scrollTop: $("#sep-bot").offset().top
+      scrollTop: $("#wordcloud").offset().top
   }, 1000);
 });
 }
-
 function updateCloud() {
 
-
-  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
-  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
-  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
-  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
-  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
-  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
-  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
-  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
-  $(`#${months[0]}`).click(function() { removeDonut(scores[comTags[0]], comTags[0]); });
-  $(`#${months[1]}`).click(function() { removeDonut(scores[comTags[1]], comTags[1]); });
-  $(`#${months[2]}`).click(function() { removeDonut(scores[comTags[2]], comTags[2]); });
-  $(`#${months[3]}`).click(function() { removeDonut(scores[comTags[3]], comTags[3]); });
+  $(`#${months[0]}`).click(function() { removeHashTags(months[0]);});
+  $(`#${months[1]}`).click(function() { removeHashTags(months[1]);});
+  $(`#${months[2]}`).click(function() { removeHashTags(months[2]);});
+  $(`#${months[3]}`).click(function() { removeHashTags(months[3]);});
+  $(`#${months[4]}`).click(function() { removeHashTags(months[4]);});
+  $(`#${months[5]}`).click(function() { removeHashTags(months[5]);});
+  $(`#${months[6]}`).click(function() { removeHashTags(months[6]);});
+  $(`#${months[7]}`).click(function() { removeHashTags(months[7]);});
+  $(`#${months[8]}`).click(function() { removeHashTags(months[8]);});
+  $(`#${months[9]}`).click(function() { removeHashTags(months[9]);});
+  $(`#${months[10]}`).click(function() { removeHashTags(months[10]);});
+  $(`#${months[11]}`).click(function() { removeHashTags(months[11]);});
 }
 
 function removeHashTags(month) {
 
-  for (let i = 0; i < months.length; i++) {
+  d3.selectAll('.cloudtags').transition().duration(400).style('opacity', 0).remove();
+  drawWordCloud(hashMonths, month)
 
-    if (!(months[i] == month)) {
 
-    // remove all hashtags not belonging to the current view
-    d3.selectAll(`text#hashtag-${months[i]}`)
-      .transition().duration(1000).style("opacity", 0)
-      .transition().duration(1000).remove();
-    }
-  }
+  // for (let i = 0; i < months.length; i++) {
+  //
+  //   if (!(months[i] == month)) {
+  //     console.log('removing')
+  //   // remove all hashtags not belonging to the current view
+  //   d3.selectAll(`text#hashtag-${months[i]}`)
+  //     .transition().duration(1000).style("opacity", 0)
+  //     .transition().duration(1000).remove();
+  //   }
+  // }
 }
 
 function createSVG(width, height) {
@@ -60,7 +65,7 @@ function createSVG(width, height) {
       .attr('id', 'linegraph')
 }
 
-function drawWordCloud(allTags, month, currentMonth){
+function drawWordCloud(allTags, month){
 
   let common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
 
@@ -139,8 +144,6 @@ function drawWordCloud(allTags, month, currentMonth){
   }
 
   d3.layout.cloud().stop();
-
-  removeHashTags(currentMonth);
 }
 
 function getHashTags() {
@@ -229,10 +232,6 @@ function getHashTags() {
         hashMonths[months[i]] = hashMonths[months[i]].join(' ');
     }
 
-    // Initialize slider
-    var slider = d3.slider().min(0).max(12).ticks(12).showRange(true).value(0);
-
-    d3.select('#slider').call(slider);
 
     createSVG(width, height)
     drawWordCloud(hashMonths, 'jan');

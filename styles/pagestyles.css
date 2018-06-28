@@ -98,7 +98,7 @@ body {
   border-style: ridge;
   border-width: 15px;
   border-color: rgba(50, 50, 50, 0.5);
-  margin-right: 10px;
+  margin: 50px;
   overflow: hidden;
 }
 
@@ -151,17 +151,20 @@ body {
 
 .rep-tag {
   font-family: impact;
-  font-size: 50px;
+  font-weight: bold;
   color: red;
   display: inline;
+  padding: 5px;
 }
 
 .dem-tag {
   font-family: impact;
-  font-size: 50px;
+  font-weight: bold;
   color: blue;
   display: inline;
+  padding: 5px;
 }
+
 
 #sentiment-title {
   font-family: Impact;
@@ -192,6 +195,15 @@ body {
   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
 .fbutton:active {
   background-color: grey;
   box-shadow: 0 5px #666;
@@ -203,7 +215,7 @@ body {
 }
 
 .m {
-  font-size: 20px;
+  font-size: 15px;
   font-family: Courier;
   font-weight: bold;
   text-align: center;
@@ -227,7 +239,13 @@ body {
 }
 
 .month-buttons-div {
-  display: inline;
-  text-align: center;
-  margin-left: 80px;
+  position: fixed;
+  display: block;
+  margin-left: 160px;
+  bottom: 10px;
+  opacity: 0.6;
+}
+
+.month-buttons-div:hover {
+  opacity: 1;
 }

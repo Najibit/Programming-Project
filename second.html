@@ -8,11 +8,7 @@
         <!-- libraries -->
         <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
         <script src="http://d3js.org/d3.v3.min.js"></script>
-        <!-- <script src="libraries/d3/d3.slider.js"></script> -->
-        <!-- <script src="scripts/slide.js"></script> -->
-        <link rel="stylesheet" type="text/css" href="libraries/slider/d3.slider.css" media="screen" />
         <script src="libraries/d3/d3.v3.js"></script>
-        <script src="libraries/slider/d3.slider.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3-queue.v3.min.js"></script>
         <script src="scripts/helpers.js"></script>
@@ -99,7 +95,7 @@
      Russian users, but reading them all would take a long time and making a
      subsequent conclusion would take even longer.<br><br></p>
 
-   <p class="article" id="art-small">Thankfully, Twitter users regulary engage
+   <p class="article" id="art-small">Thankfully, Twitter users regularly engage
      in the use of hashtags: a word or phrase preceded by a hash sign (#),
      used on social media websites and applications, especially Twitter,
      to identify messages on a specific topic. By looking at these tags, I was
@@ -112,6 +108,12 @@
     <p class=“article” id="art-small">Take a look at the word cloud I placed at
       the bottom of this page. It contains all hashtags used, seperated by the
       month of the year (2016). The bigger a tag, the more frequently it was used.<br><br></p>
+
+      <p class"article" id="art-small">
+        <hint><i>The hashtags <tag>#Trump</tag>, <tag>#BlackLivesMatter</tag>,
+          <tag>#Election2016</tag> and <tag>#Brexit</tag> were four of the top 10 
+          most used hashtags in 2016.<br><br></i></hint>
+      </p>
 
     <p class="article">Before I started exploring the data base, I had this idea
       that Russian trolls had the aim of making Donald Trump president, so I
@@ -140,9 +142,8 @@
 
       </div>
     <br><br>
-   <div id="wordcloudarea">
-     <div id="slider" height="60px"></div>
-     <div class="month-buttons-div">
+
+     <div class="month-buttons-div" height="200px">
      <button class="month-buttons" id="jan"><h2 class="m">January<h2></button>
      <button class="month-buttons" id="feb"><h2 class="m">February<h2></button>
      <button class="month-buttons" id="mar"><h2 class="m">March<h2></button>
@@ -156,10 +157,8 @@
      <button class="month-buttons" id="nov"><h2 class="m">November<h2></button>
      <button class="month-buttons" id="dec"><h2 class="m">December<h2></button>
      </div>
-     <div id="chart" width="100%" height="600">
-     </div>
-   </div>
-   <!-- <svg id="timeSlider"></svg> -->
+     <div id="chart" width="100%" height="600"></div>
+     <div id="wordcloudarea"></div>
     </body>
     <footer>
       <a href="index.html"><button class="fbutton" id="word-back-button"> BACK </button></a>
