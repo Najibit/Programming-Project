@@ -1,3 +1,11 @@
+// 
+// This page contains helper functions.
+//
+// Name: Najib el Moussaoui
+// Course: Minor Programming, End Project.
+// Date: 28-06-2018
+//
+
 function getMonths() {
 
   // return months of the year

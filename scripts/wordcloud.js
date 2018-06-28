@@ -1,3 +1,10 @@
+//
+// The page contains functions to implement the word cloud.
+//
+// Name: Najib el Moussaoui
+// Course: Minor Programming, End Project.
+// Date: 28-06-2018
+//
 
 // global storage variable
 let hashMonths = {};

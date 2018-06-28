@@ -1,3 +1,12 @@
+// 
+// This page contains functions for the brush and zoom graph.
+//
+// Name: Najib el Moussaoui
+// Course: Minor Programming, End Project.
+// Date: 28-06-2018
+//
+
+
 window.onload = function() {
   brushAndZoom();
 }
