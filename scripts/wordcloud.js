@@ -1,23 +1,31 @@
-let hashtags;
+
+// global storage variable
 let hashMonths = {};
-let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
-var width =  1300;// $("#chart").width();
-var height = 600; // $("#chart").height();
-
-let currentMonth = 'jan';
-
 
 window.onload = function() {
-getHashTags();
-updateCloud();
-$(".month-buttons").click(function() {
-  $('html, body').animate({
-      scrollTop: $("#wordcloud").offset().top
-  }, 1000);
-});
+
+  // parse all tags
+  getHashTags();
+
+  // and activate update function
+  updateCloud();
+
+  // when a month is clicked, navigate to word cloud
+  $(".month-buttons").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#wordcloud").offset().top
+    }, 1000);
+  });
+
 }
+
 function updateCloud() {
 
+  // months of the year
+  let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+  // jQuery interactivity to update word cloud based on month clicked
   $(`#${months[0]}`).click(function() { removeHashTags(months[0]);});
   $(`#${months[1]}`).click(function() { removeHashTags(months[1]);});
   $(`#${months[2]}`).click(function() { removeHashTags(months[2]);});
@@ -30,34 +38,33 @@ function updateCloud() {
   $(`#${months[9]}`).click(function() { removeHashTags(months[9]);});
   $(`#${months[10]}`).click(function() { removeHashTags(months[10]);});
   $(`#${months[11]}`).click(function() { removeHashTags(months[11]);});
+
 }
 
 function removeHashTags(month) {
 
-  d3.selectAll('.cloudtags').transition().duration(400).style('opacity', 0).remove();
-  drawWordCloud(hashMonths, month)
+  // remove current word cloud
+  d3.selectAll('.cloudtags')
+    .transition()
+    .duration(400)
+    .style('opacity', 0) // fade out
+    .remove(); // and remove
 
+  drawWordCloud(hashMonths, month);
 
-  // for (let i = 0; i < months.length; i++) {
-  //
-  //   if (!(months[i] == month)) {
-  //     console.log('removing')
-  //   // remove all hashtags not belonging to the current view
-  //   d3.selectAll(`text#hashtag-${months[i]}`)
-  //     .transition().duration(1000).style("opacity", 0)
-  //     .transition().duration(1000).remove();
-  //   }
-  // }
 }
 
+/* create an SVG */
 function createSVG(width, height) {
 
+  // select chart div
   d3.select('#chart')
     .append("svg")
     .attr("width", width)
     .attr("height", height)
     .attr('id', 'wordcloud')
 
+  // select line-chart div
   d3.select("svg#linechart")
       .append("svg")
       .attr("width", width)
@@ -65,13 +72,21 @@ function createSVG(width, height) {
       .attr('id', 'linegraph')
 }
 
+/* Draw the word cloud */
 function drawWordCloud(allTags, month){
 
+  // dimensions
+  let width =  1300;
+  let height = 600;
+
+  // ignore commonly used words
   let common = "poop,i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall";
 
-  var word_count = {};
-  // console.log(allTags[month], month)
-  var words = allTags[month].split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+  // count dict
+  let word_count = {};
+
+  // split all words in to tokens and add to count
+  let words = allTags[month].split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
     if (words.length == 1){
       word_count[words[0]] = 1;
     } else {
@@ -87,22 +102,21 @@ function drawWordCloud(allTags, month){
       })
     }
 
-  var svg_location = "#chart";
+  // fill function
+  let fill = d3.scale.category20();
 
+  // all word entries
+  let word_entries = d3.entries(word_count);
 
-  // createSVG(width, height);
-
-  var fill = d3.scale.category20();
-
-  var word_entries = d3.entries(word_count);
-
-  var xScale = d3.scale.linear()
+  // the x-scale
+  let xScale = d3.scale.linear()
      .domain([0, d3.max(word_entries, function(d) {
         return d.value;
       })
      ])
      .range([10,100]);
 
+  // initiate cloud
   d3.layout.cloud().size([width, height])
     .timeInterval(20)
     .words(word_entries)
@@ -113,11 +127,8 @@ function drawWordCloud(allTags, month){
     .on("end", draw)
     .start();
 
-    // d3.select('#chart').append("svg")
-    //     .attr("width", width)
-    //     .attr("height", height)
-    //     .attr('id', 'wordcloud')
 
+  // start drawing
   function draw(words) {
 
     d3.select('svg#wordcloud')
@@ -143,13 +154,23 @@ function drawWordCloud(allTags, month){
 
   }
 
+  // and stop the cloud
   d3.layout.cloud().stop();
 }
 
+/* Gets all tags. */
 function getHashTags() {
+
+  // dimensions
+  let width =  1300;
+  let height = 600;
 
   // store all tweets per day
   let days = [];
+
+  // months of the year
+  let months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun',
+                'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
   // make a queue
   const Q = d3.queue();
@@ -163,18 +184,20 @@ function getHashTags() {
 
     if (error) throw error;
 
-    hashtags = response;
+    // save response in new descriptive variable
+    let hashtags = response;
 
-
+    // make a dict
     for (let i = 0; i < months.length; i++) {
       hashMonths[months[i]] = [];
     }
 
+    // remove day of the month
     for (let i = 0; i < hashtags.length; i++) {
       hashtags[i].day = hashtags[i].day.slice(0, -3);
     }
 
-    // kan veel beter, maak functie
+    // sort all tags within their months
     for (let i = 0, j = 0; i < hashtags.length; i++) {
       switch (hashtags[i].day) {
         case "2016-01":
@@ -228,13 +251,17 @@ function getHashTags() {
       }
     }
 
+    // and join back together
     for (let i = 0; i < months.length; i++) {
         hashMonths[months[i]] = hashMonths[months[i]].join(' ');
     }
 
-
+    // make an SVG
     createSVG(width, height)
+
+    // and draw the initial word cloud
     drawWordCloud(hashMonths, 'jan');
+
     return hashMonths;
   }
 }

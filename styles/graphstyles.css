@@ -32,8 +32,6 @@ rect.zoom {
   z-index: 20;
 }
 
-/* bootstrap styles */
-
 .nav-item-active {
   padding-right: 20px;
 }
@@ -53,51 +51,6 @@ rect.zoom {
   margin: auto;
 }
 
-/* .slider {
-  position: relative;
-  margin: auto;
-  margin-top: 20px;
-  padding-bottom: 50px;
-  /* top: 40px;
-  left: 40px; */
-
-
-/* .slider-tray {
-  position: absolute;
-  width: 100%;
-  height: 15px;
-  border: solid 1px #ccc;
-  border-top-color: #aaa;
-  border-radius: 4px;
-  background-color: #f0f0f0;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
-} */
-
-/* .slider-handle {
-  position: absolute;
-  top: 3px;
-}
-
-.slider-handle-icon {
-  width: 14px;
-  height: 14px;
-  border: solid 1px #aaa;
-  position: absolute;
-  border-radius: 20px;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  top: -3px;
-  left: -7px;
-}
-
-.d3slider-rect-value {
-  fill: green;
-}
-
-.d3slider-rect-range {
-  fill: lightgreen;
-} */
-
 .seperator-top {
   position: fixed;
   top: 56px;
@@ -106,17 +59,3 @@ rect.zoom {
 #sep-word {
   background-color: red;
 }
-
-
-/* .tick {
-  visibility: hidden;
-} */
-
-/* #slider {
-  background-color: pink;
-  display: block;
-  margin: auto;
-  width: 100%;
-  height: 50px;
-  margin-top: 20px;
-} */

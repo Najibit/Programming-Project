@@ -6,12 +6,13 @@ window.onload = function() {
     $('html, body').animate({
         scrollTop: $("#smessage").offset().top
     }, 1000);
-});
+  });
+
 }
 
 function getSentiments(sentiments) {
 
-  let scores   = sentiments;
+  let scores = sentiments;
 
   replaceDonut(scores)
 
@@ -45,7 +46,7 @@ function removeDonut(data, tag) {
 
     $('h5').remove();
 
-    setTimeout(function(){ createDonut(data, tag);; }, 1000);
+    setTimeout(function(){ createDonut(data, tag); }, 1000);
 }
 
 

@@ -6,52 +6,41 @@
         <title>Trolls</title>
 
         <!-- libraries -->
-        <!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
-        <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="libraries/d3/d3.v3.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3-queue.v3.min.js"></script>
-        <script src="scripts/helpers.js"></script>
-        <script src="scripts/cloud.js"></script>
-        <script src="scripts/wordcloud.js"></script>
-        <!-- <script src="scripts/donut.js"></script> -->
+        <script src="libraries/cloud.js"></script>
 
+        <!-- scripts -->
+        <script src="scripts/helpers.js"></script>
+        <script src="scripts/wordcloud.js"></script>
+
+        <!-- bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
         <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
-        <!-- <script src="libraries/d3/d3.v4.js"></script> -->
-        <!-- <script> let d3v4 = Object.assign({}, d3); console.log(d3v4) </script> -->
-        <!-- <script src="scripts/brushzoom.js"></script> -->
 
-        <!-- scripts -->
-        <!-- <script src="scripts/tweetvolume.js"></script> -->
-        <!-- <script src="scripts/hashtags.js"></script> -->
-
-        <!-- <script src="scripts/linegraph.js"></script> -->
-        <script src="scripts/parsetweets.js"></script>
 
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
         <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
         <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
 
-
-
       </head>
       <body>
+
+        <!-- bootstrap container and nav bar -->
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
           <div id="logo-box">
           <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
           <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
           <a href="https://github.com/Najibit/Programming-Project"><img src="http://pluspng.com/img-png/github-octocat-logo-vector-png-github-icon-1600.png" class="github" alt="View my Github" target="_blank"></a>
-
           <a class="navbar-brand" href="index.html">Trolls</a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-     <!-- <a class="navbar-brand" href="#">Trolls</a> -->
      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
        <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
@@ -74,19 +63,24 @@
    </nav>
    <div class="seperator"></div>
    <div class="seperator-top"></div>
-   <div class="container">
 
+   <!-- container -->
+   <div class="container">
      <div class="starter-template">
        <h1 class="header-title">The Ultimate Revelation Of Russian Trolls</h1>
      </div>
    </div>
    <div class="seperator" id="sep-bot"></div>
+
+   <!-- text area -->
    <div class="text-area">
 
    <br>
 
+   <!-- picture -->
    <div id="word-pic"></div>
 
+   <!-- article -->
    <p class="article" id="art-small">
      <ht>#Tags<br></ht>
 
@@ -111,7 +105,7 @@
 
       <p class"article" id="art-small">
         <hint><i>The hashtags <tag>#Trump</tag>, <tag>#BlackLivesMatter</tag>,
-          <tag>#Election2016</tag> and <tag>#Brexit</tag> were four of the top 10 
+          <tag>#Election2016</tag> and <tag>#Brexit</tag> were four of the top 10
           most used hashtags in 2016.<br><br></i></hint>
       </p>
 
@@ -143,25 +137,32 @@
       </div>
     <br><br>
 
+      <!-- buttons to update word cloud -->
      <div class="month-buttons-div" height="200px">
-     <button class="month-buttons" id="jan"><h2 class="m">January<h2></button>
-     <button class="month-buttons" id="feb"><h2 class="m">February<h2></button>
-     <button class="month-buttons" id="mar"><h2 class="m">March<h2></button>
-     <button class="month-buttons" id="apr"><h2 class="m">April<h2></button>
-     <button class="month-buttons" id="may"><h2 class="m">May<h2></button>
-     <button class="month-buttons" id="jun"><h2 class="m">June<h2></button>
-     <button class="month-buttons" id="jul"><h2 class="m">July<h2></button>
-     <button class="month-buttons" id="aug"><h2 class="m">August<h2></button>
-     <button class="month-buttons" id="sep"><h2 class="m">September<h2></button>
-     <button class="month-buttons" id="oct"><h2 class="m">October<h2></button>
-     <button class="month-buttons" id="nov"><h2 class="m">November<h2></button>
-     <button class="month-buttons" id="dec"><h2 class="m">December<h2></button>
+       <button class="month-buttons" id="jan"><h2 class="m">January<h2></button>
+       <button class="month-buttons" id="feb"><h2 class="m">February<h2></button>
+       <button class="month-buttons" id="mar"><h2 class="m">March<h2></button>
+       <button class="month-buttons" id="apr"><h2 class="m">April<h2></button>
+       <button class="month-buttons" id="may"><h2 class="m">May<h2></button>
+       <button class="month-buttons" id="jun"><h2 class="m">June<h2></button>
+       <button class="month-buttons" id="jul"><h2 class="m">July<h2></button>
+       <button class="month-buttons" id="aug"><h2 class="m">August<h2></button>
+       <button class="month-buttons" id="sep"><h2 class="m">September<h2></button>
+       <button class="month-buttons" id="oct"><h2 class="m">October<h2></button>
+       <button class="month-buttons" id="nov"><h2 class="m">November<h2></button>
+       <button class="month-buttons" id="dec"><h2 class="m">December<h2></button>
      </div>
+
+     <!-- wordcloud -->
      <div id="chart" width="100%" height="600"></div>
      <div id="wordcloudarea"></div>
+
     </body>
+
+    <!-- back and read more buttons -->
     <footer>
       <a href="index.html"><button class="fbutton" id="word-back-button"> BACK </button></a>
       <a href="third.html"><button class="fbutton" id="word-next-button"> READ MORE </button></a>
     </footer>
+
 </html>

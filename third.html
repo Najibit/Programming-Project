@@ -13,7 +13,6 @@
         <!-- scripts -->
         <script src="scripts/helpers.js"></script>
         <script src="scripts/donut.js"></script>
-        <script src="scripts/parsetweets.js"></script>
 
         <!-- bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -27,19 +26,20 @@
         <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
 
       </head>
+
       <body>
+
+        <!-- bootstrap container -->
         <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
           <div id="logo-box">
           <img src="https://www.newshub.co.nz/home/travel/_jcr_content/icon.img.png/v1521075390516/TRAVEL_ICON_T.png" id="logo">
           <img src="https://cdn.pixabay.com/photo/2018/04/17/20/11/troll-3328570__340.png" id="small-troll">
           <a href="https://github.com/Najibit/Programming-Project"><img src="http://pluspng.com/img-png/github-octocat-logo-vector-png-github-icon-1600.png" class="github" alt="View my Github" target="_blank"></a>
-
           <a class="navbar-brand" href="index.html">Trolls</a>
         </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
        <span class="navbar-toggler-icon"></span>
      </button>
-     <!-- <a class="navbar-brand" href="#">Trolls</a> -->
      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
        <ul class="navbar-nav mr-auto">
          <li class="nav-item active">
@@ -63,29 +63,30 @@
    <div class="seperator"></div>
    <div class="seperator-top"></div>
    <div class="container">
-
      <div class="starter-template">
        <h1 class="container-title">The Ultimate Revelation Of Russian Trolls</h1>
      </div>
    </div>
    <div class="seperator"></div>
-   <div class="text-area">
 
-   <br>
+   <!-- text area -->
+   <div class="text-area"><br>
 
+   <!-- visualisation -->
    <div id="donut-chart-background" width="500" height="500">
      <h5 id="smessage">Click on one of the <tag> #tags </tag> in the text to see a sentiment analysis: view the count of <neg>negative</neg> and
        <pos>positive</pos> words used in tweets containing that <tag> #tag </tag>.</h5>
    </div>
 
+   <!-- article -->
    <p class="article" id="art-small">
      <ht>Communities<br></ht>
 
      As you've might have seen in the word cloud on the <a href="second.html">
-       previous page</a>, not only tags were used in support of the American
-       right-wing (Republicans), the 'left' (Democrats) were supported by these tweets as well. The database I used,
-       discovered that there were actual seperate communities within these
-       Russian trolls. What does it mean to be a <i>community</i>?<br><br></p>
+     previous page</a>, not only tags were used in support of the American
+     right-wing (Republicans), the 'left' (Democrats) were supported by these tweets as well. The database I used,
+     discovered that there were actual seperate communities within these
+     Russian trolls. What does it mean to be a <i>community</i>?<br><br></p>
 
    <p class="article" id="art-small">Well, these trolls didn't only tweet about
      certain topics, they interacted with each other as well. They did this through
@@ -152,6 +153,6 @@
     <hint><i>Written by Najib el Moussaoui<br><br></i></hint>
   </p>
 
-      </div>
+  </div>
   </body>
 </html>

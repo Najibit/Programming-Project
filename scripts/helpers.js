@@ -1,51 +1,3 @@
-function sortObject(obj) {
-    var arr = [];
-    for (var prop in obj) {
-        if (obj.hasOwnProperty(prop)) {
-            arr.push({
-                'key': `#${prop}`,
-                'value': obj[prop]
-            });
-        }
-    }
-    arr.sort(function(a, b) {
-      return a.value - b.value;
-    });
-    return arr;
-}
-
-function parseMonthTags(index, month) {
-  let monthTags = hashtags[index].toptags.split(',');
-  monthTags.forEach(function(tag) {
-    if (hashMonths[month][tag] == null) {
-      hashMonths[month][tag] = 0;
-    } else {
-      hashMonths[month][tag]++;
-    }
-  })
-}
-
-function getDimensions() {
-
-  const DIMENSIONS = {
-    width: 1000,
-    height: 500,
-    margin: {
-      top: 50,
-      bottom: 50,
-      left: 50,
-      right: 50
-    },
-    padding: {
-      t: 10,
-      b: 10,
-      l: 10,
-      r: 10
-    }
-  }
-
-  return DIMENSIONS
-}
 
 function getMonths() {
 
@@ -145,4 +97,53 @@ function groupHashtags(hashtags, hashDict, index) {
     }
   }
   return hashDict
+}
+
+function gimmeSentiments() {
+
+  const Q = d3.queue();
+
+  let allTweets;
+  let allSentiments;
+
+  Q.defer(d3.csv, "data/hashtags/htmaga.csv")
+   .defer(d3.csv, "data/hashtags/htblacklm.csv")
+   .defer(d3.csv, "data/hashtags/htclinton.csv")
+   .defer(d3.csv, "data/hashtags/httrump.csv")
+   .awaitAll(processTweets)
+
+  function processTweets(error, response) {
+
+    if (error) throw error;
+
+    allTweets = {};
+    allSentiments = {};
+    comTags = ['#MAGA', '#BLACKLIVESMATTER', '#CLINTON', '#TRUMP'];
+
+    for (let i = 0; i < comTags.length; i++) {
+      allTweets[comTags[i]] = response[i];
+      allSentiments[comTags[i]] = [];
+    }
+
+
+
+    for (let i = 0; i < comTags.length; i++) {
+      let negativity = 0;
+      let positivity = 0;
+
+      for (let j = 0; j < allTweets[comTags[i]].length; j++) {
+
+        let message = Object.values(allTweets[comTags[i]][j])[0]
+        let words = message.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+        let sentiments = calculateSentiment(words);
+
+
+        negativity += sentiments['Negative Words'];
+        positivity += sentiments['Positive Words'];
+      }
+
+        allSentiments[comTags[i]].push(negativity, positivity)
+    }
+    getSentiments(allSentiments)
+  }
 }
