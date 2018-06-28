@@ -6,38 +6,25 @@
         <title>Trolls</title>
 
         <!-- libraries -->
-        <script src="http://d3js.org/d3.v3.min.js"></script>
-
         <script src="libraries/d3/d3.v3.js"></script>
-
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+
+        <!-- scripts -->
         <script src="scripts/helpers.js"></script>
         <script src="scripts/donut.js"></script>
         <script src="scripts/parsetweets.js"></script>
-        <!-- <script src="scripts/donut.js"></script> -->
 
+        <!-- bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
         <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
         <link href="https://v4-alpha.getbootstrap.com/examples/starter-template/starter-template.css" rel="stylesheet">
-        <!-- <script src="libraries/d3/d3.v4.js"></script> -->
-        <!-- <script> let d3v4 = Object.assign({}, d3); console.log(d3v4) </script> -->
-        <!-- <script src="scripts/brushzoom.js"></script> -->
-
-        <!-- scripts -->
-        <!-- <script src="scripts/tweetvolume.js"></script> -->
-        <!-- <script src="scripts/hashtags.js"></script> -->
-
-        <!-- <script src="scripts/linegraph.js"></script> -->
-        <!-- <script src="scripts/parsetweets.js"></script> -->
 
         <!-- styles -->
         <link rel="stylesheet" type="text/css" href="styles/graphstyles.css">
         <link rel="stylesheet" type="text/css" href="styles/pagestyles.css">
         <link rel="stylesheet" type="text/css" href="styles/articlestyles.css">
-
-
 
       </head>
       <body>
@@ -122,9 +109,9 @@
       bit deeper, I also looked at the hashtag <button class="rep-tag" id="MAGA">#MAGA</button>. Use
       the chart to the right to see the results!<br><br>
 
-      <p class"article" id="art-small">
+      <p class"article" id="hint" width="100%">
         <hint><i>The hashtag <tg class="rep-tag" id="MAGA">#MAGA</tg> stands for MAKE AMERICA GREAT AGAIN!
-          Used for the Donald's 2016 presidential campaign.<br><br></i></hint>
+          Used for the Donald's 2016 presidential campaign.<br></i></hint>
       </p>
 
       <p class="article">Looking at the trolls showing support for the Democrats,
@@ -135,49 +122,36 @@
         sentiment analysis on the hashtag <button class="dem-tag" id="BLACKLIVESMATTER">
           #BLACKLIVESMATTER</button>. Do you see any differences?
 
-      <p class"article" id="art-small">
+      <p class"article" id="hint">
         <hint><i>The hashtag <tg class="dem-tag" id="BLACKLIVESMATTER">
           #BLACKLIVESMATTER</tg> stands for a movement African Americans used
           to show that they matter too. It doesn't mean that they don't care about other
-          races lifes, It just means their life should matter too.<br><br></i></hint>
+          races lifes, It just means their life should matter too.<br></i></hint>
       </p>
 
+  <p class="article">So, what can social media platforms and governments do to
+    monitor and prevent future abuse?
 
-      <!-- Before I started exploring the data base, I had this idea
-      that Russian trolls had the aim of making Donald Trump president, so I
-      expected all tags to support the Trump campaign, and to disapprove the
-      campaign of his primary opponent, Hillary Clinton. Yet they didn't.
-      Yeah, you see a lot of <tag>#Trump</tag> and <tag>#MakeAmericaGreatAgain</tag>,
-      but that's not all. There are also a lot of tweets containing tags
-      <i>supporting</i> <tag>#Clinton</tag> and the <tag>#BlackLivesMatter</tag>
-      campaign. Why? Why would you support both sides of the spectrum? I was clueless.<br><br>
+    First, it’s a matter of connections. In today’s hyper-connected world,
+    it’s difficult to identify relationships in a dataset if you’re not using a
+    technology purpose-built for storing connected data. It’s even more difficult
+    if you’re not looking for connections in the first place.<br><br>
 
-      And then it hit me. I saw a fascinating
-      <a href="https://www.youtube.com/watch?v=zgmg2VFX058"><tag>#video</tag></a>
-      on YouTube, about an interview with an ex-KGB agent discussing Russian
-      propaganda tactics. In short, he talks about how they (during the Soviet-era)
-      tried to disrupt other nations by splitting them up in seperate groups and
-      pushing both groups to their respective (ideological) extremes. "Divide and
-      conquer", as some would say. They were creating seperate <tag>#communities</tag>,
-      and pit them against each other. Interesting. <br><br>
+    Second, once something as this is realised, it is important for governments
+    and tech-companies to take action to solve these issues. A democracy is led by
+    the will of the people, but what if the will of the people isn't based on their
+    own ration thoughts -- but rather on thoughts injected in their heads by external sources,
+    e.g. through the media? What's left of a democracy at that point?<br><br>
 
-      Take a look for yourself. See how these trolls tweeted over 2016, and take
-      a specific look at how they tweeted in the months leading up to the Presidential
-      elections. What do you notice?<br><br> -->
+    And last but not least: be critical. Think about what you read and don't take
+    anything for granted you see online, because in this higly mediatized society
+    we live in nowadays, not everything is really real, and every person can be fake.<br><br>
+  </p>
 
-    </p>
+  <p class"article" id="art-small">
+    <hint><i>Written by Najib el Moussaoui<br><br></i></hint>
+  </p>
 
       </div>
-
-
-
-
-   <!-- <div id="donut-chart-background" width="500" height="500">
-     <h5 id="smessage">Click on one of the <tag> #tags </tag> in the text to see a sentiment analysis: view the count of <neg>negative</neg> and
-       <pos>positive</pos> words used in tweets containing that <tag> #tag </tag>.</h5>
-   </div> -->
   </body>
-  <footer>
-    <a href="second.html"><button class="fbutton" id="word-back-button"> BACK </button></a>
-    <footer>
 </html>

@@ -249,3 +249,9 @@ button:active {
 .month-buttons-div:hover {
   opacity: 1;
 }
+
+#hint {
+  width: 100%;
+  float: left;
+  margin-left: 50px;
+}
