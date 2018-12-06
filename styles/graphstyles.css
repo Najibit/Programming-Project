@@ -42,6 +42,7 @@ rect.zoom {
 #linechart {
   display:block !important;
   margin:auto !important;
+  margin-left: 20%;
   margin-bottom: 50px;
 }
 
